@@ -35,10 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
-  # 本地数据库（手机端用这个）
+  # 本地数据库（手机端用这个，使用系统自带 SQLite，无需下载原生库）
   sqflite: ^2.0.0
-  # 让同一套数据库代码也能在 Windows 桌面运行（方便你在电脑上调试）
-  sqflite_common_ffi: ^2.0.0
   # 拼接文件路径
   path: ^1.8.0
 

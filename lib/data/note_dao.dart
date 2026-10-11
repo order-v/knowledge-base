@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart'
-    show databaseFactoryFfi, sqfliteFfiInit;
 
 import '../models/note.dart';
 
@@ -13,15 +9,6 @@ import '../models/note.dart';
 /// 建连接、写 SQL、把结果转成对象，不掺界面逻辑。
 class NoteDao {
   static Database? _database;
-
-  /// 桌面端（Windows / macOS / Linux）需要切换数据库实现。
-  /// 手机端调用这个方法是空操作，所以可以放心在 main 里统一调用。
-  static void initPlatform() {
-    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      sqfliteFfiInit();
-      databaseFactory = databaseFactoryFfi;
-    }
-  }
 
   /// 打开数据库（第一次会建表）。用 static 缓存，避免重复打开。
   static Future<Database> get _db async {
